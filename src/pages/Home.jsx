@@ -1,21 +1,31 @@
 import React from 'react';
-import {Box} from "@mui/material";
-import GradientItem from "../components/GradientItem";
+import { Box } from '@mui/material';
+import GradientItem from '../components/GradientItem';
+import { connect } from 'react-redux';
 
-export default class Home extends React.Component {
-	render(){
-		return(
-			<Box className="App" sx={{
-				display: 'flex',
-				flexWrap: 'wrap',
-				justifyContent: 'space-around'
-			}}>
-				<GradientItem/>
-				<GradientItem/>
-				<GradientItem/>
-				<GradientItem/>
-				<GradientItem/>
+class Home extends React.Component {
+	render() {
+		const { gradients } = this.props;
+
+		return (
+			<Box
+				className="App"
+				sx={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					justifyContent: 'space-around',
+				}}>
+				{gradients.map((gradient, index) => (
+					<GradientItem key={index} gradient={gradient} />
+				))}
 			</Box>
-		)
+		);
 	}
 }
+
+export default connect(
+	({ gradients }) => ({
+		gradients,
+	}),
+	{}
+)(Home);
