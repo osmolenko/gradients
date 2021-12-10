@@ -3,6 +3,7 @@ import { FieldArray, Form, getIn, Formik } from 'formik';
 import * as yup from 'yup';
 import {
 	Button,
+	Divider,
 	FormControl,
 	FormHelperText,
 	IconButton,
@@ -26,7 +27,8 @@ const EditForm = () => {
 						.matches(
 							/^#([0-9a-f]{3}|[0-9a-f]{6})$/i,
 							'Must be a HEX color code'
-						),
+						)
+						.required('Color is required'),
 				})
 			),
 	});
@@ -34,7 +36,7 @@ const EditForm = () => {
 	return (
 		<Formik
 			initialValues={{
-				name: 'Nice new color',
+				name: 'New color',
 				colors: [
 					{
 						id: Math.random() * 100,
@@ -69,6 +71,7 @@ const EditForm = () => {
 								{touchedName && errorName ? errorName : ''}
 							</FormHelperText>
 						</FormControl>
+						<Divider />
 						<FieldArray name="colors">
 							{({ push, remove }) => (
 								<>
@@ -83,7 +86,8 @@ const EditForm = () => {
 												error={Boolean(
 													touchedCurrentColor && errorCurrentColor
 												)}
-												key={c.id}>
+												key={c.id}
+												margin="dense">
 												<InputLabel htmlFor={currentColor}>Color</InputLabel>
 												<OutlinedInput
 													name={currentColor}
@@ -103,7 +107,7 @@ const EditForm = () => {
 																			? 'none'
 																			: 'inherit',
 																}}>
-																<Close color="secondary" />
+																<Close color="error" />
 															</IconButton>
 														</InputAdornment>
 													}
@@ -124,8 +128,11 @@ const EditForm = () => {
 												id: Math.random(),
 												color: '#aeaeae',
 											})
-										}>
-										Add
+										}
+										sx={{
+											marginRight: '10px',
+										}}>
+										Add 1 more color
 									</Button>
 								</>
 							)}
