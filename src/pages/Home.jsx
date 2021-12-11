@@ -18,6 +18,7 @@ class Home extends React.Component {
 						maxWidth: '400px',
 						margin: '15px auto',
 						textAlign: 'center',
+						gap: '10px',
 					}}>
 					<Typography variant="h4">Gradient lister and editor</Typography>
 					<Link to="/new">
