@@ -11,6 +11,7 @@ class Home extends React.Component {
 		return (
 			<>
 				<Box
+					component="header"
 					sx={{
 						display: 'flex',
 						justifyContent: 'center',
@@ -33,6 +34,7 @@ class Home extends React.Component {
 				</Box>
 				<Container
 					className="App"
+					component="section"
 					sx={{
 						display: 'flex',
 						flexWrap: 'wrap',

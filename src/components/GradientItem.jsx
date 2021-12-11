@@ -33,6 +33,7 @@ const GradientItem = (props) => {
 				flexGrow: '100',
 			}}>
 			<CardMedia
+				component="div"
 				sx={{
 					height: '200px',
 					minWidth: '380px',
@@ -40,7 +41,6 @@ const GradientItem = (props) => {
 					${colors.map((e) => e.color).join(', ')}
 					  )`,
 				}}
-				component="div"
 			/>
 			<CardActions
 				sx={{

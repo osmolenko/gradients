@@ -10,6 +10,7 @@ function EditGradient(props) {
 	return (
 		<Box
 			className="App"
+			component="section"
 			sx={{
 				padding: '20px',
 				maxWidth: '600px',
