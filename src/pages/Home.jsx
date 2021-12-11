@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 
 class Home extends React.Component {
 	render() {
-		const { gradients } = this.props;
-
+		const { list } = this.props;
 		return (
 			<Box
 				className="App"
@@ -15,8 +14,8 @@ class Home extends React.Component {
 					flexWrap: 'wrap',
 					justifyContent: 'space-around',
 				}}>
-				{gradients.map((gradient, index) => (
-					<GradientItem key={index} gradient={gradient} />
+				{list.map((gradient, index) => (
+					<GradientItem key={gradient.id} gradient={gradient} />
 				))}
 			</Box>
 		);
@@ -24,8 +23,8 @@ class Home extends React.Component {
 }
 
 export default connect(
-	({ gradients }) => ({
-		gradients,
+	({ gradients: { list } }) => ({
+		list,
 	}),
-	{}
+	null
 )(Home);
