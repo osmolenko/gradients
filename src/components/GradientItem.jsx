@@ -40,6 +40,7 @@ const GradientItem = (props) => {
 					${colors.map((e) => e.color).join(', ')}
 					  )`,
 				}}
+				component="div"
 			/>
 			<CardActions
 				sx={{
