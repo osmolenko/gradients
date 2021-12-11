@@ -7,9 +7,23 @@ import {
 	Typography,
 } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteItem } from '../actions/gradient';
 
 const GradientItem = (props) => {
-	const { colors, name } = props.gradient;
+	const { colors, name, id } = props.gradient;
+	const { deleteItem } = props;
+	const navigate = useNavigate();
+
+	function editHandler(id) {
+		navigate(`/edit/${id}`);
+	}
+
+	function deleteHandler(id) {
+		deleteItem(id);
+	}
+
 	return (
 		<Card
 			sx={{
@@ -40,10 +54,18 @@ const GradientItem = (props) => {
 					}}>
 					{name}
 				</Typography>
-				<IconButton color="primary" aria-label="Edit item" component="span">
+				<IconButton
+					color="primary"
+					aria-label="Edit item"
+					component="span"
+					onClick={() => editHandler(id)}>
 					<Edit />
 				</IconButton>
-				<IconButton color="primary" aria-label="Delete item" component="span">
+				<IconButton
+					color="primary"
+					aria-label="Delete item"
+					component="span"
+					onClick={() => deleteHandler(id)}>
 					<Delete />
 				</IconButton>
 			</CardActions>
@@ -51,4 +73,4 @@ const GradientItem = (props) => {
 	);
 };
 
-export default GradientItem;
+export default connect(null, { deleteItem })(GradientItem);
