@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import NewGradient from './pages/NewGradient';
+import EditGradient from './pages/EditGradient';
 
 function App() {
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />
-			<Route path="new" element={<NewGradient />} />
-			<Route path="edit/:gradientId" element={<Home />} />
+			<Route path="new" element={<EditGradient />} />
+			<Route path="edit/:id" element={<EditGradient />} />
 		</Routes>
 	);
 }
