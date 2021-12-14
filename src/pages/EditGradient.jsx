@@ -3,13 +3,12 @@ import { Box, Typography } from '@mui/material';
 import EditForm from '../components/EditForm';
 import { useNavigate, useParams } from 'react-router-dom';
 
-function EditGradient(props) {
+function EditGradient() {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
 	return (
 		<Box
-			className="App"
 			component="section"
 			sx={{
 				padding: '20px',
@@ -17,6 +16,7 @@ function EditGradient(props) {
 				margin: '0 auto',
 			}}>
 			<Typography
+				data-testid="EditHeading"
 				variant="h3"
 				sx={{
 					textAlign: 'center',

@@ -26,6 +26,7 @@ const GradientItem = (props) => {
 
 	return (
 		<Card
+			data-testid="CardContainer"
 			sx={{
 				margin: '10px',
 				display: 'flex',
@@ -33,6 +34,7 @@ const GradientItem = (props) => {
 				flexGrow: '100',
 			}}>
 			<CardMedia
+				data-testid="CardColor"
 				component="div"
 				sx={{
 					height: '200px',
@@ -43,10 +45,12 @@ const GradientItem = (props) => {
 				}}
 			/>
 			<CardActions
+				data-testid="CardActions"
 				sx={{
 					padding: '5px 30px',
 				}}>
 				<Typography
+					data-testid="CardName"
 					variant="span"
 					sx={{
 						flexGrow: 1,
@@ -56,6 +60,7 @@ const GradientItem = (props) => {
 					{name}
 				</Typography>
 				<IconButton
+					data-testid="CardEditButton"
 					color="primary"
 					aria-label="Edit item"
 					component="span"
@@ -63,6 +68,7 @@ const GradientItem = (props) => {
 					<Edit />
 				</IconButton>
 				<IconButton
+					data-testid="CardDeleteButton"
 					color="primary"
 					aria-label="Delete item"
 					component="span"

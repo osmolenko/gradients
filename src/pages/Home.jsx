@@ -11,6 +11,7 @@ class Home extends React.Component {
 		return (
 			<>
 				<Box
+					data-testid="HomeHeader"
 					component="header"
 					sx={{
 						display: 'flex',
@@ -21,8 +22,10 @@ class Home extends React.Component {
 						textAlign: 'center',
 						gap: '10px',
 					}}>
-					<Typography variant="h4">Gradient lister and editor</Typography>
-					<Link to="/new">
+					<Typography data-testid="HomeHeading" variant="h4">
+						Gradient lister and editor
+					</Typography>
+					<Link data-testid="HomeNewButton" to="/new">
 						<Fab
 							variant="extended"
 							color="primary"
@@ -33,6 +36,7 @@ class Home extends React.Component {
 					</Link>
 				</Box>
 				<Container
+					data-testid="HomeCardsContainer"
 					className="App"
 					component="section"
 					sx={{

@@ -75,22 +75,24 @@ class EditForm extends React.Component {
 				initialValues={current || initial}
 				validationSchema={validationSchema}
 				onSubmit={(values) => {
+					navigate();
+
 					if (id) {
 						modifyItem(values);
 					} else {
 						addNewItem(values);
 					}
-					navigate();
 				}}
 				enableReinitialize>
 				{({ values, touched, errors, handleChange, handleBlur, isValid }) => {
 					const touchedName = getIn(touched, 'name');
 					const errorName = getIn(errors, 'name');
 					return (
-						<Form noValidate autoComplete="off">
+						<Form data-testid="EditForm" noValidate autoComplete="off">
 							<FormControl fullWidth error={Boolean(touchedName && errorName)}>
 								<InputLabel htmlFor="name">Name</InputLabel>
 								<OutlinedInput
+									data-testid="EditName"
 									id="name"
 									name="name"
 									value={values.name}
@@ -120,6 +122,7 @@ class EditForm extends React.Component {
 													margin="dense">
 													<InputLabel htmlFor={currentColor}>Color</InputLabel>
 													<OutlinedInput
+														data-testid="EditColor"
 														name={currentColor}
 														value={c.color}
 														onChange={handleChange}
@@ -128,16 +131,13 @@ class EditForm extends React.Component {
 														endAdornment={
 															<InputAdornment position="end">
 																<IconButton
+																	data-testid="EditDeleteColor"
 																	aria-label={`remove ${c.color} color from list`}
 																	edge="end"
 																	onClick={() => remove(index)}
-																	sx={{
-																		display:
-																			values.colors.length <= 2
-																				? 'none'
-																				: 'inherit',
-																	}}>
-																	<Close color="error" />
+																	disabled={values.colors.length <= 2}
+																	color="error">
+																	<Close />
 																</IconButton>
 															</InputAdornment>
 														}
@@ -151,6 +151,7 @@ class EditForm extends React.Component {
 											);
 										})}
 										<Button
+											data-testid="EditAddColor"
 											type="button"
 											variant="outlined"
 											onClick={() =>
@@ -168,10 +169,11 @@ class EditForm extends React.Component {
 								)}
 							</FieldArray>
 							<Button
+								data-testid="EditSubmit"
 								type="submit"
 								color="primary"
 								variant="contained"
-								disabled={!isValid || values.colors.length === 0}>
+								disabled={!isValid}>
 								{id ? 'modify' : 'submit'}
 							</Button>
 						</Form>
